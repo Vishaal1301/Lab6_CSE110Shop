@@ -3,7 +3,7 @@
 
 window.addEventListener('DOMContentLoaded', () => {
   // TODO
-  localStorage.removeItem('products');
+  //localStorage.removeItem('products');
   if(!localStorage.getItem('products')) {
     fetch('https://fakestoreapi.com/products')
       .then(response => response.json())
@@ -11,9 +11,13 @@ window.addEventListener('DOMContentLoaded', () => {
         //alert(data);
         localStorage.setItem('products', JSON.stringify(data));
 
-        for(let i = 0; i < 1; i++){
+        for(let i = 0; i < data.length; i++){
           const card = document.createElement('product-item');
-          card.setAttribute('item',data[i]);
+          card.setAttribute('item', JSON.stringify(data[i]));
+          card.setImage(data[i].image);
+          card.setAltandTitle(data[i].title);
+          card.setPrice(data[i].price);
+
           document.getElementById("product-list").appendChild(card);
         }
       });

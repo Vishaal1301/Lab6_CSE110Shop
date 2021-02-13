@@ -4,24 +4,24 @@ class ProductItem extends HTMLElement {
   constructor(){
     super();
     this.attachShadow({mode: 'open'});
-
+    
     const listWrapper = document.createElement('li');
     listWrapper.setAttribute('class', 'product');
-
+    
     const imgElem = document.createElement('img');
-    imgElem.setAttribute('src',this.getElementsByTagName('img').src);
-    imgElem.setAttribute('alt',this.getElementsByTagName('alt').alt);
-    imgElem.setAttribute('width','200');
+    //console.log(this)
+    //imgElem.alt = this.getAttribute('item')[''];
+    imgElem.width = 200;
     listWrapper.appendChild(imgElem);
-
+    
     const pElem1 = document.createElement('p');
     pElem1.setAttribute('class','title');
-    pElem1.textContent = this.getElementsByClassName("title").textContent;
+    //pElem1.textContent = this.getElementsByClassName("title").textContent;
     listWrapper.appendChild(pElem1);
 
     const pElem2 = document.createElement('p');
     pElem2.setAttribute('class','price');
-    pElem2.textContent = this.getElementsByClassName("price").textContent;
+    //pElem2.textContent = this.getElementsByClassName("price").textContent;
     listWrapper.appendChild(pElem2);
 
     const but = document.createElement('button');
@@ -94,9 +94,25 @@ class ProductItem extends HTMLElement {
       overflow: auto;
       text-overflow: unset;
     }`;
-    
+
     this.shadowRoot.append(style, listWrapper);
+    //console.log(this)
+  }
+
+  setImage(source){
+    this.shadowRoot.querySelector("li").querySelector("img").src = source;
+  }
+
+  setAltandTitle(descrip){
+    this.shadowRoot.querySelector("li").querySelector("img").alt = descrip;
+    this.shadowRoot.querySelector("li").querySelector(".title").textContent = descrip;
+  }
+  
+  setPrice(cost){
+    console.log(cost)
+    this.shadowRoot.querySelector("li").querySelector(".price").textContent = cost;
   }
 }
+
 
 customElements.define('product-item', ProductItem);
