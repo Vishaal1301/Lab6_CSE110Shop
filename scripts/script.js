@@ -2,7 +2,6 @@
 
 
 window.addEventListener('DOMContentLoaded', () => {
-  // TODO
   //localStorage.removeItem('products');
   if(!localStorage.getItem('products')) {
     fetch('https://fakestoreapi.com/products')
