@@ -1,6 +1,5 @@
 // Script.js
 window.addEventListener('DOMContentLoaded', () => {
-  //localStorage.removeItem('products');
   if(!localStorage.getItem('products')) {
     fetch('https://fakestoreapi.com/products')
       .then(response => response.json())
@@ -26,22 +25,18 @@ window.addEventListener('DOMContentLoaded', () => {
                 arr[itemId-1]++;
                 card.shadowRoot.querySelector('li').querySelector('button').innerText = "Remove from Cart";
                 
-                //console.log(document.ElementsByClassName("nav-link"));
                 let myCart = document.getElementById("cart-count");
-                // console.log(myCart.innerHTML);
                 myCart.innerHTML = arr[20];
                 card.shadowRoot.querySelector('li').querySelector('button').setAttribute('onclick', "alert('Remove from Cart')");
       
               }
               else {
-                //let arr = JSON.parse(localStorage.getItem('cartItems'));
                 let itemId = JSON.parse(card.getAttribute('item')).id;
                 arr[20]--;
                 arr[itemId-1]--;
                 card.shadowRoot.querySelector('li').querySelector('button').innerText = "Add to Cart";
                 
                 let myCart = document.getElementById("cart-count");
-                // console.log(myCart.innerHTML);
                 myCart.innerHTML = arr[20];
                 card.shadowRoot.querySelector('li').querySelector('button').setAttribute('onclick', "alert('Add to Cart')");
               }
@@ -84,9 +79,7 @@ window.addEventListener('DOMContentLoaded', () => {
           arr[itemId-1]++;
           card.shadowRoot.querySelector('li').querySelector('button').innerText = "Remove from Cart";
           
-          //console.log(document.ElementsByClassName("nav-link"));
           let myCart = document.getElementById("cart-count");
-          // console.log(myCart.innerHTML);
           myCart.innerHTML = arr[20];
           card.shadowRoot.querySelector('li').querySelector('button').setAttribute('onclick', "alert('Remove from Cart')");
 
@@ -98,15 +91,10 @@ window.addEventListener('DOMContentLoaded', () => {
           card.shadowRoot.querySelector('li').querySelector('button').innerText = "Add to Cart";
           
           let myCart = document.getElementById("cart-count");
-          // console.log(myCart.innerHTML);
           myCart.innerHTML = arr[20];
           card.shadowRoot.querySelector('li').querySelector('button').setAttribute('onclick', "alert('Add to Cart')");
         }
 
-        
-        
-        //arr[20]++;
-        //arr[itemId-1]++;
         localStorage.setItem('cartItems', JSON.stringify(arr));
       })
 
