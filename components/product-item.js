@@ -1,9 +1,15 @@
 // product-item.js
+let ind;
 class ProductItem extends HTMLElement {
   constructor(){
+
     super();
     this.attachShadow({mode: 'open'});
     
+    
+    //this.item = JSON.parse(localStorage.getItem('products'))[ind];
+    //console.log(this.item)
+
     const listWrapper = document.createElement('li');
     listWrapper.setAttribute('class', 'product');
     
@@ -95,7 +101,9 @@ class ProductItem extends HTMLElement {
     }`;
 
     this.shadowRoot.append(style, listWrapper);
-    //console.log(this)
+    //console.log(this.item.id)
+    //item = this;
+    //console.
   }
 
   setImage(source){
@@ -108,10 +116,43 @@ class ProductItem extends HTMLElement {
   }
   
   setPrice(cost){
-    console.log(cost)
+    // console.log(cost)
     this.shadowRoot.querySelector("li").querySelector(".price").textContent = cost;
   }
-}
 
+  getInd(index){
+    ind = index;
+  }
+
+  // setOnClick(){
+  //   // try this? https://developers.google.com/web/fundamentals/web-components/shadowdom
+  //   this.shadowRoot.querySelector("li").querySelector("button").addEventListener('click', clickButton);
+  //   //console.log(this.item.id);
+  //   function clickButton(){
+  //     //console.log(this);
+  //     let arr = JSON.parse(localStorage.getItem('cartItems'));
+  //     //console.log(this);
+  //     //console.log(indToIncrement.item);
+  //     //arr[indToIncrement.id]++;
+  //     arr[20]++;
+      
+  //     //console.log(arr)
+
+  //     let cartText = document.querySelector("button").innerHTML;
+      
+  //     if (cartText == "Add to cart"){
+  //       arr[20]++;
+  //       document.querySelector("button").innerHTML = "Remove from cart";
+  //     }
+  //     else{
+  //       document.querySelector("button").innerHTML = "Add to cart";
+  //       arr[20]--;
+  //     }
+  //     const cartNum = document.getElementById("cart-count");
+  //     cartNum.value = arr[20];
+  //     localStorage.setItem('cartItems', JSON.stringify(arr));
+  //   }
+  // }
+}
 
 customElements.define('product-item', ProductItem);
